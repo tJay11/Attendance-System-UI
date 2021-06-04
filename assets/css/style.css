@@ -1,0 +1,453 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --ffmain: 'Poppins', sans-serif;
+    /*--colors--*/
+    --color1: #fff;
+    --color2: #d9d9d9;
+    --color3: #68c1cb;
+    --color4: #999;
+}
+
+body, input, select, option {
+    font-family: var(--ffmain);
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.wrapper::before {
+    top: 0;
+    right: 0;
+}
+
+.wrapper::before {
+    content: "";
+    position: absolute;
+    height: 2000px;
+    width: 2000px;
+    top: -10%;
+    right: 41%;
+    transform: translateY(-50%);
+    background-image: linear-gradient(-45deg, #289ec2 0%, #87e3f4 100%);
+    transition: 1s ease-in-out;
+    border-radius: 50%;
+    z-index: 2;
+    animation: movement 1s ease-in-out;
+}
+
+@keyframes movement {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+.attendance {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+form {
+    width: 350px;
+    min-height: 400px;
+    padding: 3em;
+    border-radius: 8px;
+    /* box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.07); */
+    position: absolute;
+    top: 50%;
+    left: 83%;
+    transform: translate(-83%, -50%);
+}
+
+form p {
+    display: none;
+    font-size: .8rem;
+    color: #555;
+    margin: 2em 0 1EM;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--color3);
+}
+
+.input-div {
+    position: relative;
+    display: grid;
+    grid-template-columns: 7% 93%;
+    margin: 25px 0;
+    padding: 5px 0;
+    border-bottom: 2px solid var(--color2);
+}
+
+.input-div.one {
+    margin-top: 0;
+}
+
+.i {
+    color: var(--color2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.i i {
+    transition: .3s;
+}
+
+.input-div>div {
+    position: relative;
+    height: 45px;
+}
+
+.input-div>div>h5 {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color4);
+    font-size: .9rem;
+    font-weight: 500;
+    transition: .3s;
+}
+
+.input-div:before, .input-div:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background-color: var(--color3);
+    transition: .4s;
+}
+
+.input-div:before {
+    right: 50%;
+}
+
+.input-div:after {
+    left: 50%;
+}
+
+.input-div.focus:before, .input-div.focus:after {
+    width: 50%;
+}
+
+.input-div.focus>div>h5 {
+    top: -5px;
+    font-size: .7rem;
+}
+
+.input-div.focus>.i>i {
+    color: var(--color3);
+}
+
+.input-div>div>input, .input-div>div>select {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 0.5rem 0.7rem;
+    font-size: .9rem;
+    color: #555;
+}
+
+.input-div.pass {
+    margin-bottom: 4px;
+}
+
+.input-div>div>select {
+    font-weight: 500;
+    color: var(--color4);
+}
+
+input[type='submit'] {
+    width: 100%;
+    font-weight: 500;
+    font-size: 1rem;
+    margin: 1em 0;
+    padding: .6em;
+    border-radius: 100vh;
+    color: var(--color1);
+    border: none;
+    background: rgb(83, 191, 230);
+    cursor: pointer;
+    transition: 300ms ease-in;
+}
+
+input[type='submit']:hover, .clock-in-area .sign-up-area a:hover {
+    background: rgb(28, 120, 154);
+}
+
+.social-media.one {
+    display: none;
+    justify-content: center;
+}
+
+.social-media.one .social-icon {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0.45rem;
+    color: rgb(57, 145, 172);
+    border-radius: 50%;
+    border: 2px solid rgb(57, 145, 172);
+    text-decoration: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+}
+
+.social-media.one .social-icon:hover {
+    background: rgb(57, 145, 172);
+    color: var(--color1);
+    border: 2px solid rgb(57, 145, 172);
+}
+
+/*------------Panel-------------------*/
+
+.panel-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.left-container {
+    display: flex;
+    text-align: center;
+    color: var(--color1);
+    z-index: 6;
+    padding: 4em 20% 2em;
+    pointer-events: all;
+    grid-column: 1 / 2;
+}
+
+.left-container .content {
+    display: flex;
+    flex-direction: column;
+}
+
+.left-container .content h2 {
+    margin: 0.7em;
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: var(--ffmain);
+}
+
+.left-container .content p {
+    font-size: 1rem;
+    margin-bottom: 2.5em;
+}
+
+.left-container .content .logo img {
+    height: 100px;
+}
+
+.left-container .content .logo p {
+    font-weight: 600;
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.social-icon {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0.45rem;
+    color: var(--color1);
+    border-radius: 50%;
+    border: 2px solid var(--color1);
+    text-decoration: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s ease-in;
+}
+
+.social-icon:hover {
+    background: var(--color1);
+    color: rgb(57, 145, 172);
+}
+
+/*------------------------------
+-----Landing Page--------------
+=-----------------------------*/
+
+.clock-in-area {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.clock-in-area .button {
+    /* width: 100%;
+    height: 80px; */
+    padding: 1.8em 4em;
+    font-size: 1rem;
+    text-align: center;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-family: var(--ffmain);
+    font-weight: 600;
+    color: var(--color1);
+    cursor: pointer;
+    background: linear-gradient(330deg, rgb(72, 184, 225), rgb(123, 201, 225), rgb(153, 226, 238));
+    transition: background .4s ease-in-out;
+}
+
+.clock-in-area .button:hover {
+    background: linear-gradient(330deg, rgb(47, 145, 181), rgb(84, 158, 181), rgb(109, 179, 189));
+}
+
+.clock-in-area .sign-up-area {
+    padding: 20px;
+    border: 1px solid var(--color3);
+    border-radius: 10px;
+    min-height: 130px;
+}
+
+.clock-in-area .sign-up-area h4 {
+    margin-bottom: 1.6em;
+    color: #555;
+}
+
+.clock-in-area .sign-up-area a {
+    background: var(--color3);
+    border-radius: 100vh;
+    color: var(--color1);
+    font-size: .9rem;
+    padding: .6em 4em;
+    margin: 2em 0;
+    transition: 300ms ease-in;
+}
+
+/*------Medai Q----------=*/
+
+@media (max-width: 940px) {
+    .wrapper {
+        min-height: 1000px;
+        height: 100vh;
+        /* overflow-y: inherit; */
+    }
+    .wrapper::before {
+        width: 1500px;
+        height: 1500px;
+        transform: translateX(-50%);
+        left: 50%;
+        bottom: 75%;
+        right: initial;
+        top: initial;
+        transition: 1s ease-in-out;
+        animation: movement2 1s ease-in-out;
+    }
+    @keyframes movement2 {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+    form {
+        width: 65%;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -70%);
+        padding: 30px 0;
+        box-shadow: none;
+    }
+    .form2 {
+        top: 77%;
+    }
+    .form3 {
+        top: 63%;
+    }
+    .panel-container {
+        z-index: 20;
+        display: block;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 4fr;
+    }
+    .left-container {
+        padding: 2em 8%;
+        grid-row: 1 / 2;
+    }
+    .left-container .content {
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 50px;
+        /* align-items: center; */
+    }
+    .social-media {
+        display: none;
+    }
+    .social-media.one {
+        display: flex;
+    }
+    .social-message {
+        display: none;
+    }
+    form p {
+        display: block;
+    }
+    .left-container .content .logo img {
+        height: 50px;
+    }
+    .left-container .content .logo p {
+        font-size: .6rem;
+    }
+    .left-container .content h2 {
+        font-size: .9rem;
+        font-weight: 600;
+        font-family: var(--ffmain);
+    }
+    .left-container .content p {
+        font-size: .8rem;
+        margin-bottom: 1em;
+    }
+}
+
+@media (max-width: 570px) {
+    .wrapper::before {
+        left: 85%;
+        bottom: 73%;
+    }
+}
